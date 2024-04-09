@@ -100,14 +100,13 @@ const { title } = Astro.props;
 </script>
 
 <style>
-  @media (min-width: 640px) {
+  @media (max-width: 640px) {
     #cursor-follower {
-      display: block;
+      visibility: hidden;
     }
   }
 
   #cursor-follower {
-    display: none;
     position: absolute;
     opacity: 0;
     animation: none;
