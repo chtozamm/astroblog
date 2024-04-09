@@ -1,0 +1,33 @@
+---
+import Layout from "./Layout.astro";
+import { format } from "date-fns";
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={frontmatter.title}>
+  <article
+    id="article"
+    class="mx-auto text-base bg-opacity-15 bg-black p-4 sm:p-8 rounded-lg shadow-sm"
+  >
+    <h1 class="text-2xl font-extrabold tracking-tight sm:text-3xl text-center">
+      {frontmatter.title}
+    </h1>
+    <section class="flex justify-between items-center my-4">
+      <p class="text-zinc-500 dark:text-zinc-300 text-sm leading-7">
+        {format(new Date(frontmatter.pubDate), "PPP")}
+      </p>
+    </section>
+    <section
+      class="text-zinc-800 dark:text-zinc-100 leading-7 text-base break-words"
+    >
+      <slot />
+    </section>
+  </article>
+</Layout>
+
+<style>
+  h1 {
+    font-family: "Merriweather", serif;
+  }
+</style>

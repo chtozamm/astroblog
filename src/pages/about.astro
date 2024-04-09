@@ -1,0 +1,46 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="About">
+  <h2
+    class="mb-8 text-center pb-2 text-2xl sm:text-3xl font-semibold tracking-tight first:mt-0"
+  >
+    Testimonials:
+  </h2>
+  <div class="relative w-44 sm:w-52 aspect-square rounded-full bg-transparent">
+    <img
+      src="/obi-wan-kenobi.jpg"
+      alt="Obi-Wan Kenobi"
+      loading="eager"
+      class="w-44 sm:w-52 absolute top-0 left-0 rounded-full overflow-hidden"
+    />
+  </div>
+  <p class="leading-7 sm:text-lg mt-4 sm:mt-6"><b>Obi-Wan Kenobi:</b></p>
+  <p
+    class="border-l-2 border-zinc-400 pl-6 mx-2 pr-4 sm:mx-0 py-2 bg-black bg-opacity-15 italic leading-7 mt-4 sm:mt-6 sm:text-lg"
+  >
+    Hello there! This appears to be promising! I sense a strong presence of the <strong
+      >Force</strong
+    > within this site. ⚡
+  </p>
+</Layout>
+
+<style>
+  img {
+    box-shadow:
+      rgba(255, 255, 255, 1) 0px 0px 3px,
+      rgba(232, 158, 62, 1) 0px 0px 7px,
+      rgba(232, 158, 62, 0.3) 0px 0px 48px;
+  }
+  .testimonial::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    filter: brightness(50%);
+  }
+</style>

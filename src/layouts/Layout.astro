@@ -1,51 +1,150 @@
 ---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Personal Astroblogship 🚀" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title ? `${title} - Astroblog 🚀` : "Astroblog 🚀"}</title>
+  </head>
+  <body
+    class="flex flex-col justify-between min-h-screen text-zinc-800 dark:text-zinc-50"
+  >
+    <div>
+      <Header />
+      <main class="flex flex-col items-center mx-auto max-w-2xl">
+        <slot />
+        <div id="cursor-follower"></div>
+      </main>
+    </div>
+    <Footer />
+  </body>
 </html>
-<style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
+
+<script is:inline>
+  // Set up cursor-follower
+  const cursorFollower = document.getElementById("cursor-follower");
+  const root = document.documentElement;
+  console.log(document.querySelectorAll("a"));
+
+  let posX = 0,
+    posY = 0,
+    mouseX = 0,
+    mouseY = 0;
+
+  setInterval(() => {
+    posX += (mouseX - posX) / 9;
+    posY += (mouseY - posY) / 9;
+
+    cursorFollower.style.left = posX - 12 + "px";
+    cursorFollower.style.top = posY - 12 + "px";
+  }, 10);
+
+  // Manage smooth cursor-follower appearance on page load
+  root.addEventListener(
+    "mousemove",
+    (e) => {
+      posX += (mouseX - posX) / 9;
+      posY += (mouseY - posY) / 9;
+      setTimeout(() => {
+        cursorFollower.style.animation = "appear 0.3s ease-in-out forwards";
+      }, 300);
+
+      cursorFollower.style.left = posX - 12 + "px";
+      cursorFollower.style.top = posY - 12 + "px";
+    },
+    { once: true }
+  );
+
+  // Update mouse coordinates on move
+  root.addEventListener("mousemove", (e) => {
+    mouseX = e.pageX;
+    mouseY = e.pageY;
+  });
+
+  // Control visibility of the cursor-follower when hovering over links or title
+  document.querySelectorAll("a").forEach((node) =>
+    node.addEventListener("mouseenter", () => {
+      cursorFollower.style.animationName = "disappear";
+    })
+  );
+  document.querySelectorAll("a").forEach((node) =>
+    node.addEventListener("mouseleave", () => {
+      cursorFollower.style.animationName = "appear";
+    })
+  );
+  document.getElementById("title").addEventListener("mouseenter", () => {
+    cursorFollower.style.animationName = "disappear";
+  });
+  document.getElementById("title").addEventListener("mouseleave", () => {
+    cursorFollower.style.animationName = "appear";
+  });
+</script>
+
+<style>
+  @media (min-width: 640px) {
+    #cursor-follower {
+      display: block;
+    }
+  }
+
+  #cursor-follower {
+    display: none;
+    position: absolute;
+    opacity: 0;
+    animation: none;
+    background: radial-gradient(rgba(120, 212, 255, 0.6), transparent);
+    box-shadow:
+      white 0px 0px 80px,
+      #3eaae8 0px 0px 60px;
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+    z-index: 1;
+    transition:
+      0.6s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform,
+      0.4s cubic-bezier(0.75, -1.27, 0.3, 2.33) opacity;
+    user-select: none;
+    pointer-events: none;
+    transform: translate(4px, 4px);
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  @keyframes appear {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes disappear {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
 </style>
