@@ -12,11 +12,11 @@ const allPosts: MarkdownInstance<{
 
 <Layout title="">
   <h2
-    class="mb-8 text-center pb-2 text-2xl sm:text-3xl font-semibold tracking-tight first:mt-0"
+    class="mb-2 sm:mb-4 text-center pb-2 text-lg sm:text-2xl font-inter font-extralight uppercase tracking-tight first:mt-0 text-zinc-400"
   >
     Recent posts:
   </h2>
-  <ul>
+  <ul class="px-2 sm:px-0 grid gap-y-4">
     {allPosts.map((post) => <BlogPost post={post} />)}
   </ul>
 </Layout>

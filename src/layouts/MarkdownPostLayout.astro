@@ -8,9 +8,9 @@ const { frontmatter } = Astro.props;
 <Layout title={frontmatter.title}>
   <article
     id="article"
-    class="mx-auto text-base bg-opacity-15 bg-black p-4 sm:p-8 rounded-lg shadow-sm"
+    class="sm:mx-auto text-base bg-opacity-15 bg-black p-4 sm:p-8 rounded-lg mx-2 shadow-sm"
   >
-    <h1 class="text-2xl font-extrabold tracking-tight sm:text-3xl text-center">
+    <h1 class="text-xl font-extrabold tracking-tight sm:text-3xl text-center text-balance">
       {frontmatter.title}
     </h1>
     <section class="flex justify-between items-center my-4">
@@ -19,7 +19,7 @@ const { frontmatter } = Astro.props;
       </p>
     </section>
     <section
-      class="text-zinc-800 dark:text-zinc-100 leading-7 text-base break-words"
+      class="text-zinc-800 dark:text-zinc-100 leading-6 sm:leading-7 text-sm sm:text-base break-words"
     >
       <slot />
     </section>
