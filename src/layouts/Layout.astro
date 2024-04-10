@@ -62,14 +62,13 @@ const { title } = Astro.props;
   root.addEventListener(
     "mousemove",
     (e) => {
-      posX += (mouseX - posX) / 9;
-      posY += (mouseY - posY) / 9;
+      // posX += (mouseX - posX) / 9;
+      // posY += (mouseY - posY) / 9;
       setTimeout(() => {
-        cursorFollower.style.animation = "appear 0.3s ease-in-out forwards";
-      }, 300);
-
-      cursorFollower.style.left = posX - 12 + "px";
-      cursorFollower.style.top = posY - 12 + "px";
+        // cursorFollower.style.left = posX - 12 + "px";
+        // cursorFollower.style.top = posY - 12 + "px";
+        cursorFollower.style.animation = "appear 0.15s ease-in-out forwards";
+      }, 500);
     },
     { once: true }
   );
@@ -110,12 +109,12 @@ const { title } = Astro.props;
     position: absolute;
     opacity: 0;
     animation: none;
-    background: radial-gradient(rgba(120, 212, 255, 0.6), transparent);
+    background: radial-gradient(rgba(120, 212, 255, 0.6), rgba(0, 0, 0, 0));
     box-shadow:
       white 0px 0px 80px,
       #3eaae8 0px 0px 60px;
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
     border-radius: 100%;
     z-index: 1;
     transition:
@@ -131,19 +130,23 @@ const { title } = Astro.props;
 
   @keyframes appear {
     0% {
-      opacity: 0;
+      opacity: 0.75;
+      scale: 0;
     }
     100% {
       opacity: 1;
+      scale: 1;
     }
   }
 
   @keyframes disappear {
     0% {
       opacity: 1;
+      scale: 1;
     }
     100% {
       opacity: 0;
+      scale: 0.75;
     }
   }
 </style>
