@@ -2,4 +2,4 @@
 
 > This page will be updated in the future 🧑‍🚀
 
-![Preview]("https://github.com/chtozamm/astroblogship/blob/main/public/preview.avif")
+![Preview](https://raw.githubusercontent.com/chtozamm/astroblogship/main/public/preview.png)
