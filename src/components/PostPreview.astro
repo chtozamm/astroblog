@@ -1,0 +1,31 @@
+---
+import type { MarkdownInstance } from "astro"
+import { format } from "date-fns"
+
+interface Props {
+  post: MarkdownInstance<{
+    title: string
+    description: string
+    pubDate: string
+    image: string
+  }>
+}
+
+const { post } = Astro.props
+---
+
+<li>
+  <a
+    href={post.url}
+    class="group flex w-full flex-col gap-4 overflow-hidden rounded-lg bg-black bg-opacity-15 p-4 font-merriweather shadow-xl transition-all duration-500 ease-out hover:bg-opacity-30 sm:aspect-auto sm:p-6">
+    <p class="text-pretty text-xl font-semibold sm:text-2xl">
+      {post.frontmatter.title}
+    </p>
+    <p class="text-pretty break-words font-inter text-sm font-light leading-6">
+      {post.frontmatter.description}
+    </p>
+    <p class="font-merriweather text-xs font-extralight text-neutral-400">
+      {format(new Date(post.frontmatter.pubDate), "PPP")}
+    </p>
+  </a>
+</li>
