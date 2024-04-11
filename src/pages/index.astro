@@ -1,22 +1,29 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import BlogPost from "../components/BlogPost.astro";
-import type { MarkdownInstance } from "astro";
+import Layout from "../layouts/Layout.astro"
+import PostPreview from "../components/PostPreview.astro"
+import type { MarkdownInstance } from "astro"
 
 const allPosts: MarkdownInstance<{
-  title: string;
-  description: string;
-  pubDate: string;
-}>[] = await Astro.glob("./blog/*.md");
+  title: string
+  description: string
+  pubDate: string
+  image: string
+}>[] = await Astro.glob("./blog/*.md")
 ---
 
-<Layout title="">
-  <h2
-    class="mb-2 sm:mb-4 text-center pb-2 text-lg sm:text-2xl font-inter font-extralight uppercase tracking-tight first:mt-0 text-zinc-400"
-  >
-    Recent posts:
-  </h2>
-  <ul class="px-2 sm:px-0 grid gap-y-4">
-    {allPosts.map((post) => <BlogPost post={post} />)}
+<Layout header="recent posts">
+  <ul class="grid gap-y-4">
+    {allPosts.map((post) => <PostPreview post={post} />)}
   </ul>
 </Layout>
+<style>
+  h2 {
+    background: linear-gradient(-45deg, #f32a49, #ffffff, #3eaae8);
+    background-size: 300%;
+    background-clip: text;
+    text-shadow:
+      white 0px 0px 1px,
+      hsla(199, 100%, 50%, 0.4) 1px 1px 1px,
+      rgba(255, 72, 0, 0.4) -1px -1px 1px;
+  }
+</style>

@@ -7,7 +7,17 @@ export default {
       backgroundColor: {
         dark: "#13151a",
       },
+      fontFamily: {
+        inter: "inter, sans-serif",
+        merriweather: "Merriweather, serif",
+      },
+      fontSize: {
+        xs: "12px",
+      },
+      aspectRatio: {
+        wide: "21/9",
+      },
     },
   },
   plugins: [],
-};
+}

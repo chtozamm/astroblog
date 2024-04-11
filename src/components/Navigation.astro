@@ -1,18 +1,17 @@
 ---
-const pathname = Astro.url.pathname;
+const pathname = Astro.url.pathname
 ---
 
 <nav
-  class="text-center mt-8 text-sm select-none flex text-zinc-200 items-center justify-center gap-8"
->
+  class="mt-8 flex select-none items-center justify-center gap-8 text-center text-sm text-neutral-200">
   <a
     href="/"
-    class={`${pathname === "/" && "font-bold text-zinc-50"} sm:min-w-16 mr-4 last:m-0`}
+    class={`${pathname === "/" && "font-bold text-neutral-50"} sm:min-w-16 p-2 mr-4 last:m-0 link`}
     >Home</a
   >
   <a
     href="/about"
-    class={`${pathname === "/about" && "font-bold text-zinc-50"} sm:min-w-16 mr-4 last:m-0`}
+    class={`${pathname === "/about" && "font-bold text-neutral-50"} sm:min-w-16 p-2 mr-4 last:m-0 link`}
     >About</a
   >
 </nav>
