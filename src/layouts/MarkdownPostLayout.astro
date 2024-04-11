@@ -1,33 +1,52 @@
 ---
-import Layout from "./Layout.astro";
-import { format } from "date-fns";
+import type { MarkdownInstance } from "astro"
+import Layout from "./Layout.astro"
+import { format } from "date-fns"
 
-const { frontmatter } = Astro.props;
+const { frontmatter } = Astro.props
+const allPosts: MarkdownInstance<{
+  title: string
+  description: string
+  pubDate: string
+}>[] = await Astro.glob("../pages/blog/*.md")
 ---
 
 <Layout title={frontmatter.title}>
   <article
     id="article"
-    class="sm:mx-auto text-base bg-opacity-15 bg-black p-4 sm:p-8 rounded-lg mx-2 shadow-sm"
-  >
-    <h1 class="text-xl font-extrabold tracking-tight sm:text-3xl text-center text-balance">
+    class="flex w-full flex-col gap-4 rounded-2xl bg-black bg-opacity-15 p-4 shadow-sm sm:gap-6 sm:p-6">
+    <h1
+      class="text-balance text-center font-merriweather text-2xl font-semibold tracking-tight sm:text-3xl">
       {frontmatter.title}
     </h1>
-    <section class="flex justify-between items-center my-4">
-      <p class="text-zinc-500 dark:text-zinc-300 text-sm leading-7">
-        {format(new Date(frontmatter.pubDate), "PPP")}
-      </p>
-    </section>
-    <section
-      class="text-zinc-800 dark:text-zinc-100 leading-6 sm:leading-7 text-sm sm:text-base break-words"
-    >
+    <section class="font-inter text-sm font-light leading-6">
       <slot />
     </section>
+    <!-- <img
+      src={frontmatter.image}
+      alt="Planet volumes"
+      class="mb-4 aspect-wide w-full object-cover"
+    /> -->
+    <p class="font-merriweather text-xs font-extralight text-neutral-400">
+      {format(new Date(frontmatter.pubDate), "PPP")}
+    </p>
   </article>
+  <h2
+    class="mb-4 mt-16 w-full text-center font-inter text-sm font-extralight uppercase tracking-wide sm:text-base">
+    See other posts:
+  </h2>
+  <ul
+    class="grid gap-y-4 rounded-2xl bg-black bg-opacity-15 p-4 shadow-sm sm:px-6 sm:py-4">
+    {
+      allPosts
+        .filter((post) => post.frontmatter.title !== frontmatter.title)
+        .map((post) => (
+          <li class="">
+            <a href={post.url} class="text-pretty text-sm font-medium">
+              {post.frontmatter.title}
+            </a>
+          </li>
+        ))
+    }
+  </ul>
 </Layout>
-
-<style>
-  h1 {
-    font-family: "Merriweather", serif;
-  }
-</style>
