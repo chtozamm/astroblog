@@ -1,18 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro"
-import PostPreview from "../components/PostPreview.astro"
-import type { MarkdownInstance } from "astro"
-
-const allPosts: MarkdownInstance<{
-  title: string
-  description: string
-  pubDate: string
-  image: string
-}>[] = await Astro.glob("./blog/*.md")
+import FrameworkCard from "../components/FrameworkCard.astro"
 ---
 
-<Layout header="recent posts">
-  <ul class="grid gap-y-4">
-    {allPosts.map((post) => <PostPreview post={post} />)}
+<Layout>
+  <h2
+    class="mb-6 w-full text-center font-inter text-lg font-extralight uppercase tracking-wide sm:mb-8 sm:text-xl">
+    Services:
+  </h2>
+  <ul class="grid grid-cols-2 gap-x-4">
+    <FrameworkCard title="Next.js" image="/frameworks/nextjs.svg" />
+    <FrameworkCard title="Astro" image="/frameworks/astro.svg" />
   </ul>
 </Layout>
