@@ -5,78 +5,80 @@
 <div id="cursor-follower"></div>
 
 <script is:inline>
-  // Set up cursor-follower
-  const cursorFollower = document.getElementById("cursor-follower")
-  const root = document.documentElement
+  document.addEventListener("astro:page-load", () => {
+    // Set up cursor-follower
+    const cursorFollower = document.getElementById("cursor-follower")
+    const root = document.documentElement
 
-  let posX = 0,
-    posY = 0,
-    mouseX = 0,
-    mouseY = 0
-  onLink = false
+    let posX = 0,
+      posY = 0,
+      mouseX = 0,
+      mouseY = 0
+    onLink = false
 
-  setInterval(() => {
-    posX += (mouseX - posX) / 9
-    posY += (mouseY - posY) / 9
+    setInterval(() => {
+      posX += (mouseX - posX) / 9
+      posY += (mouseY - posY) / 9
 
-    cursorFollower.style.left = posX - 12 + "px"
-    cursorFollower.style.top = posY - 12 + "px"
-  }, 10)
-
-  // Update mouse coordinates on move
-  root.addEventListener("mousemove", (e) => {
-    mouseX = e.clientX
-    mouseY = e.clientY
-
-    if (
-      mouseY <= 8 ||
-      mouseX <= 8 ||
-      mouseX + 8 >= window.innerWidth ||
-      mouseY + 8 >= window.innerHeight
-    ) {
-      cursorFollower.style.animationName = "disappear"
-    } else if (onLink === false) {
-      cursorFollower.style.animationName = "appear"
-    }
-  })
-
-  // Manage smooth cursor-follower appearance on page load
-  root.addEventListener(
-    "mousemove",
-    (e) => {
-      mouseX = e.clientX
-      mouseY = e.clientY
-      posX += mouseX - posX
-      posY += mouseY - posY
       cursorFollower.style.left = posX - 12 + "px"
       cursorFollower.style.top = posY - 12 + "px"
-      cursorFollower.style.left = e.clientX + "px"
-      cursorFollower.style.top = e.clientY + "px"
+    }, 10)
 
-      cursorFollower.style.animation = "appear 0.3s ease-in-out forwards"
-    },
-    { once: true },
-  )
+    // Update mouse coordinates on move
+    root.addEventListener("mousemove", (e) => {
+      mouseX = e.clientX
+      mouseY = e.clientY
 
-  // Control visibility of the cursor-follower when hovering over links or title
-  document.querySelectorAll("a").forEach((node) =>
-    node.addEventListener("mouseenter", () => {
+      if (
+        mouseY <= 8 ||
+        mouseX <= 8 ||
+        mouseX + 8 >= window.innerWidth ||
+        mouseY + 8 >= window.innerHeight
+      ) {
+        cursorFollower.style.animationName = "disappear"
+      } else if (onLink === false) {
+        cursorFollower.style.animationName = "appear"
+      }
+    })
+
+    // Manage smooth cursor-follower appearance on page load
+    root.addEventListener(
+      "mousemove",
+      (e) => {
+        mouseX = e.clientX
+        mouseY = e.clientY
+        posX += mouseX - posX
+        posY += mouseY - posY
+        cursorFollower.style.left = posX - 12 + "px"
+        cursorFollower.style.top = posY - 12 + "px"
+        cursorFollower.style.left = e.clientX + "px"
+        cursorFollower.style.top = e.clientY + "px"
+
+        cursorFollower.style.animation = "appear 0.3s ease-in-out forwards"
+      },
+      { once: true },
+    )
+
+    // Control visibility of the cursor-follower when hovering over links or title
+    document.querySelectorAll("a").forEach((node) =>
+      node.addEventListener("mouseenter", () => {
+        onLink = true
+        cursorFollower.style.animationName = "disappear"
+      }),
+    )
+    document.querySelectorAll("a").forEach((node) =>
+      node.addEventListener("mouseleave", () => {
+        onLink = false
+        cursorFollower.style.animationName = "appear"
+      }),
+    )
+    document.querySelector("#title").addEventListener("mouseenter", () => {
       onLink = true
       cursorFollower.style.animationName = "disappear"
-    }),
-  )
-  document.querySelectorAll("a").forEach((node) =>
-    node.addEventListener("mouseleave", () => {
+    })
+    document.querySelector("#title").addEventListener("mouseleave", () => {
       onLink = false
       cursorFollower.style.animationName = "appear"
-    }),
-  )
-  document.querySelector("#title").addEventListener("mouseenter", () => {
-    onLink = true
-    cursorFollower.style.animationName = "disappear"
-  })
-  document.querySelector("#title").addEventListener("mouseleave", () => {
-    onLink = false
-    cursorFollower.style.animationName = "appear"
+    })
   })
 </script>

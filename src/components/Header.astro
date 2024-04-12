@@ -80,8 +80,10 @@ import Navigation from "./Navigation.astro"
 </style>
 
 <script is:inline>
-  const title = document.querySelector("#title")
-  title.addEventListener("click", () => {
-    title.classList.toggle("glow")
+  document.addEventListener("astro:page-load", () => {
+    const title = document.querySelector("#title")
+    title.addEventListener("click", () => {
+      title.classList.toggle("glow")
+    })
   })
 </script>
