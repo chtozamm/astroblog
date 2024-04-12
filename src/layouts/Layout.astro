@@ -29,19 +29,17 @@ const { title, header } = Astro.props
   </head>
   <body
     class="flex min-h-screen flex-col justify-between selection:bg-cyan-600 selection:bg-opacity-30">
-    <div>
+    <main class="mx-2 flex max-w-2xl flex-col items-center sm:mx-auto">
       <Header />
-      <main class="mx-2 flex max-w-2xl flex-col items-center sm:mx-auto">
-        {
-          header && (
-            <h2 class="mb-6 w-full text-center font-inter text-lg font-extralight uppercase tracking-wide sm:mb-8 sm:text-xl">
-              {header}:
-            </h2>
-          )
-        }
-        <slot />
-      </main>
-    </div>
+      {
+        header && (
+          <h2 class="mb-6 w-full text-center font-inter text-lg font-extralight uppercase tracking-wide sm:mb-8 sm:text-xl">
+            {header}:
+          </h2>
+        )
+      }
+      <slot />
+    </main>
     <Footer />
     <CursorFollower />
   </body>

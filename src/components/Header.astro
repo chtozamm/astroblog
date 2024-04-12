@@ -2,17 +2,19 @@
 import Navigation from "./Navigation.astro"
 ---
 
-<Navigation />
-<h1
-  id="title"
-  class="relative mx-auto my-6 mb-12 w-fit -translate-x-6 select-none text-center text-5xl font-extrabold tracking-tight sm:my-12 sm:mb-16 sm:text-6xl">
-  Astroblog <img
-    src="/favicon.svg"
-    class="rocket absolute -right-14 top-0 w-12 sm:-mr-4 sm:w-16"
-    loading="eager"
-    alt="Astro"
-  />
-</h1>
+<header>
+  <Navigation />
+  <h1
+    id="title"
+    class="relative mx-auto mb-12 w-fit -translate-x-6 select-none text-center text-5xl font-extrabold tracking-tight sm:my-12 sm:mb-16 sm:text-6xl">
+    Astroblog <img
+      src="/favicon.svg"
+      class="rocket absolute -right-14 top-0 w-12 sm:-mr-4 sm:w-16"
+      loading="eager"
+      alt="Astro"
+    />
+  </h1>
+</header>
 
 <style>
   h1 {
