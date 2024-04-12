@@ -112,8 +112,10 @@ import Navigation from "./Navigation.astro"
 
     document.querySelectorAll("a").forEach((a) => {
       a.addEventListener("click", () => {
-        nav.classList.toggle("hidden")
-        nav.classList.toggle("flex")
+        if (!nav.classList.contains("hidden")) {
+          nav.classList.toggle("hidden")
+          nav.classList.toggle("flex")
+        }
       })
     })
   })
