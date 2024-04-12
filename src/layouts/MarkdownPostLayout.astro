@@ -38,7 +38,9 @@ const allPosts = await getCollection("posts")
         .filter((post) => post.data.title !== data.title)
         .map((post) => (
           <li class="">
-            <a href={post.slug} class="text-pretty text-sm font-medium">
+            <a
+              href={`/blog/${post.slug}`}
+              class="text-pretty text-sm font-medium">
               {post.data.title}
             </a>
           </li>
