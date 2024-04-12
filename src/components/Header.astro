@@ -2,16 +2,22 @@
 import Navigation from "./Navigation.astro"
 ---
 
-<header>
+<header class="w-full">
   <Navigation />
   <h1
     id="title"
-    class="relative mx-auto mb-12 w-fit -translate-x-6 select-none text-center text-5xl font-extrabold tracking-tight sm:my-12 sm:mb-16 sm:text-6xl">
+    class="relative z-10 mx-auto mb-12 w-fit -translate-x-6 select-none text-center text-5xl font-extrabold tracking-tight sm:my-12 sm:mb-16 sm:text-6xl">
     Astroblog <img
       src="/favicon.svg"
       class="rocket absolute -right-14 top-0 w-12 sm:-mr-4 sm:w-16"
       loading="eager"
       alt="Astro"
+    />
+    <img
+      src="/images/tap-here.png"
+      alt="Tap on the header to open menu"
+      class="absolute -left-12 top-12 hidden w-1/2 scale-75 sm:hidden"
+      id="tap-pointer"
     />
   </h1>
 </header>
@@ -81,9 +87,34 @@ import Navigation from "./Navigation.astro"
 
 <script is:inline>
   document.addEventListener("astro:page-load", () => {
+    const tapPointer = document.getElementById("tap-pointer")
+    const header = document.querySelector("header")
     const title = document.querySelector("#title")
-    title.addEventListener("click", () => {
-      title.classList.toggle("glow")
+    const nav = document.getElementById("navigation")
+
+    const isTapPointerHidden =
+      !!window.localStorage.getItem("hide-pointer") || false
+    if (!isTapPointerHidden) {
+      tapPointer.classList.toggle("hidden")
+    }
+
+    header.addEventListener("click", () => {
+      if (window.innerWidth <= 640) {
+        title.classList.toggle("glow")
+        if (!isTapPointerHidden) {
+          window.localStorage.setItem("hide-pointer", "1")
+          tapPointer.remove()
+        }
+      }
+      nav.classList.toggle("hidden")
+      nav.classList.toggle("flex")
+    })
+
+    document.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => {
+        nav.classList.toggle("hidden")
+        nav.classList.toggle("flex")
+      })
     })
   })
 </script>

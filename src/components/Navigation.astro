@@ -2,33 +2,65 @@
 const pathname = Astro.url.pathname
 ---
 
-<nav
-  class="my-8 flex select-none flex-wrap items-center justify-center gap-4 text-sm text-neutral-400 sm:my-8">
-  <a
-    href="/"
-    class={`${pathname === "/" && "text-neutral-50 pointer-events-none"} sm:min-w-16 p-2 font-light link`}
-    >Home</a
-  >
-  <a
-    href="/blog"
-    class={`${(pathname === "/blog/" || pathname === "/blog") && "text-neutral-50 pointer-events-none"} sm:min-w-16 p-2 link font-light`}
-    >Blog</a
-  >
-  <a
-    href="/about"
-    class={`${(pathname === "/about/" || pathname === "/about") && "text-neutral-50 pointer-events-none"} sm:min-w-16 p-2 link font-light`}
-    >About</a
-  >
-  <a
-    href="/case-studies"
-    class={`${(pathname === "/case-studies/" || pathname === "/case-studies") && "text-neutral-50 pointer-events-none"} sm:min-w-16 p-2 link font-light`}
-    >Works</a
-  >
-  <a
-    href="/testimonials"
-    class={`${(pathname === "/testimonials/" || pathname === "/testimonials") && "text-neutral-50 pointer-events-none"} sm:min-w-16 p-2 link font-light`}
-    >Testimonials</a
-  >
+<nav class="mt-12 sm:mt-0">
+  <!-- <button
+    type="button"
+    id="nav-button"
+    class="absolute z-20 top-8 right-8 inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 md:hidden dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+    <span class="sr-only">Open navigation</span>
+    <svg
+      class="h-5 w-5"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 17 14">
+      <path
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M1 1h15M1 7h15M1 13h15"></path>
+    </svg>
+  </button> -->
+  <ul
+    class="absolute inset-0 z-10 hidden w-full select-none flex-col flex-wrap items-center gap-4 bg-black bg-opacity-95 pt-36 sm:pt-0 text-sm text-neutral-400 sm:static sm:my-8 sm:flex sm:flex-row sm:justify-center sm:bg-opacity-0"
+    id="navigation">
+    <li>
+      <a
+        href="/"
+        class={`${pathname === "/" && "text-neutral-50 pointer-events-none"} sm:min-w-16 p-2 font-light link`}
+        >Home</a
+      >
+    </li>
+    <li>
+      <a
+        href="/blog"
+        class={`${(pathname === "/blog/" || pathname === "/blog") && "text-neutral-50 pointer-events-none"} sm:min-w-16 p-2 link font-light`}
+        >Blog</a
+      >
+    </li>
+    <li>
+      <a
+        href="/about"
+        class={`${(pathname === "/about/" || pathname === "/about") && "text-neutral-50 pointer-events-none"} sm:min-w-16 p-2 link font-light`}
+        >About</a
+      >
+    </li>
+    <li>
+      <a
+        href="/case-studies"
+        class={`${(pathname === "/case-studies/" || pathname === "/case-studies") && "text-neutral-50 pointer-events-none"} sm:min-w-16 p-2 link font-light`}
+        >Works</a
+      >
+    </li>
+    <li>
+      <a
+        href="/testimonials"
+        class={`${(pathname === "/testimonials/" || pathname === "/testimonials") && "text-neutral-50 pointer-events-none"} sm:min-w-16 p-2 link font-light`}
+        >Testimonials</a
+      >
+    </li>
+  </ul>
 </nav>
 
 <style>
@@ -37,3 +69,5 @@ const pathname = Astro.url.pathname
     font-weight: 600;
   }
 </style>
+
+
