@@ -1,34 +1,30 @@
 ---
-import type { MarkdownInstance } from "astro"
 import Layout from "./Layout.astro"
 import { format } from "date-fns"
+import { getCollection } from "astro:content"
 
-const { frontmatter } = Astro.props
-const allPosts: MarkdownInstance<{
-  title: string
-  description: string
-  pubDate: string
-}>[] = await Astro.glob("../pages/blog/*.md")
+const { data } = Astro.props
+const allPosts = await getCollection("posts")
 ---
 
-<Layout title={frontmatter.title}>
+<Layout title={data.title}>
   <article
     id="article"
     class="flex w-full flex-col gap-4 rounded-2xl bg-black bg-opacity-15 p-4 shadow-sm sm:gap-6 sm:p-6">
     <h1
       class="text-balance text-center font-merriweather text-2xl font-semibold tracking-tight sm:text-3xl">
-      {frontmatter.title}
+      {data.title}
     </h1>
     <section class="font-inter text-sm font-light leading-6">
       <slot />
     </section>
     <!-- <img
-      src={frontmatter.image}
+      src={data.image}
       alt="Planet volumes"
       class="mb-4 aspect-wide w-full object-cover"
     /> -->
     <p class="font-merriweather text-xs font-extralight text-neutral-400">
-      {format(new Date(frontmatter.pubDate), "PPP")}
+      {format(new Date(data.pubDate), "PPP")}
     </p>
   </article>
   <h2
@@ -39,11 +35,11 @@ const allPosts: MarkdownInstance<{
     class="grid gap-y-4 rounded-2xl bg-black bg-opacity-15 p-4 shadow-sm sm:px-6 sm:py-4">
     {
       allPosts
-        .filter((post) => post.frontmatter.title !== frontmatter.title)
+        .filter((post) => post.data.title !== data.title)
         .map((post) => (
           <li class="">
-            <a href={post.url} class="text-pretty text-sm font-medium">
-              {post.frontmatter.title}
+            <a href={post.slug} class="text-pretty text-sm font-medium">
+              {post.data.title}
             </a>
           </li>
         ))

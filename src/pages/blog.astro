@@ -1,14 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro"
 import PostPreview from "../components/PostPreview.astro"
-import type { MarkdownInstance } from "astro"
+import { getCollection } from "astro:content"
 
-const allPosts: MarkdownInstance<{
-  title: string
-  description: string
-  pubDate: string
-  image: string
-}>[] = await Astro.glob("./blog/*.md")
+const allPosts = await getCollection("posts")
 ---
 
 <Layout title="Blog" header="recent posts">
