@@ -16,14 +16,3 @@ const allPosts: MarkdownInstance<{
     {allPosts.map((post) => <PostPreview post={post} />)}
   </ul>
 </Layout>
-<style>
-  h2 {
-    background: linear-gradient(-45deg, #f32a49, #ffffff, #3eaae8);
-    background-size: 300%;
-    background-clip: text;
-    text-shadow:
-      white 0px 0px 1px,
-      hsla(199, 100%, 50%, 0.4) 1px 1px 1px,
-      rgba(255, 72, 0, 0.4) -1px -1px 1px;
-  }
-</style>

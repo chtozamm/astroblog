@@ -1,0 +1,22 @@
+---
+import Testimonial from "../components/Testimonial.astro"
+import Layout from "../layouts/Layout.astro"
+---
+
+<Layout title="Testimonials" header="testimonials">
+  <ul class="grid w-full grid-cols-1 gap-y-4 font-merriweather">
+    <Testimonial
+      name="Obi-Wan Kenobi"
+      imageUrl="/images/testimonials/obi-wan-kenobi.jpg"
+      >Hello there! This appears to be promising! I sense a strong presence of
+      the <strong class="font-semibold">Force</strong> within this site. ⚡</Testimonial
+    >
+    <Testimonial
+      name="Severus Snape"
+      imageUrl="/images/testimonials/severus-snape.jpg"
+      >This seems somewhat intriguing. <strong class="font-semibold"
+        >However</strong
+      >, it remains to be seen if it will prove worthy of attention.</Testimonial
+    >
+  </ul>
+</Layout>

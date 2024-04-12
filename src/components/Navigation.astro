@@ -3,16 +3,21 @@ const pathname = Astro.url.pathname
 ---
 
 <nav
-  class="mt-8 flex select-none items-center justify-center gap-8 text-center text-sm text-neutral-200">
+  class="my-8 flex select-none items-center justify-center gap-4 text-sm text-neutral-200 sm:my-8">
   <a
     href="/"
-    class={`${pathname === "/" && "font-bold text-neutral-50"} sm:min-w-16 p-2 mr-4 last:m-0 link`}
+    class={`${pathname === "/" && "font-bold text-neutral-50"} sm:min-w-16 p-2 link`}
     >Home</a
   >
   <a
     href="/about"
-    class={`${pathname === "/about" && "font-bold text-neutral-50"} sm:min-w-16 p-2 mr-4 last:m-0 link`}
+    class={`${(pathname === "/about/" || pathname === "/about") && "font-bold text-neutral-50"} sm:min-w-16 p-2 link`}
     >About</a
+  >
+  <a
+    href="/testimonials"
+    class={`${(pathname === "/testimonials/" || pathname === "/testimonials") && "font-bold text-neutral-50"} sm:min-w-16 p-2 link`}
+    >Testimonials</a
   >
 </nav>
 

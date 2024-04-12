@@ -1,33 +1,22 @@
 ---
-import Testimonial from "../components/Testimonial.astro"
 import Layout from "../layouts/Layout.astro"
 ---
 
-<Layout title="About" header="testimonials">
-  <ul class="grid w-full grid-cols-1 gap-y-4 font-merriweather">
-    <Testimonial
-      name="Obi-Wan Kenobi"
-      imageUrl="/images/testimonials/obi-wan-kenobi.jpg"
-      >Hello there! This appears to be promising! I sense a strong presence of
-      the <strong class="font-semibold">Force</strong> within this site. ⚡</Testimonial
-    >
-    <Testimonial
-      name="Severus Snape"
-      imageUrl="/images/testimonials/severus-snape.jpg"
-      >This seems somewhat intriguing. <strong class="font-semibold"
-        >However</strong
-      >, it remains to be seen if it will prove worthy of attention.</Testimonial
-    >
-  </ul>
+<Layout title="About">
+  <article
+    id="article"
+    class="flex w-full flex-col gap-4 rounded-2xl bg-black bg-opacity-15 p-4 shadow-sm sm:gap-6 sm:p-6">
+    <h1
+      class="text-balance text-center font-merriweather text-2xl font-semibold tracking-tight sm:text-3xl">
+      Welcome!
+    </h1>
+    <section class="font-inter text-sm font-light leading-6">
+      <p>This page hasn't been written yet. Stay tuned! 🧑‍🚀</p>
+    </section>
+    <img
+      src="/images/flite-earth-past.jpg"
+      alt="Planet volumes"
+      class="mb-4 aspect-video w-full rounded-2xl object-cover"
+    />
+  </article>
 </Layout>
-<style>
-  h2 {
-    background: linear-gradient(-45deg, #f32a49, #ffffff, #3eaae8);
-    background-size: 300%;
-    background-clip: text;
-    text-shadow:
-      white 0px 0px 1px,
-      hsla(199, 100%, 50%, 0.4) 1px 1px 1px,
-      rgba(255, 72, 0, 0.4) -1px -1px 1px;
-  }
-</style>
