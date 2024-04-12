@@ -1,0 +1,18 @@
+---
+import Layout from "../layouts/Layout.astro"
+import PostPreview from "../components/PostPreview.astro"
+import type { MarkdownInstance } from "astro"
+
+const allPosts: MarkdownInstance<{
+  title: string
+  description: string
+  pubDate: string
+  image: string
+}>[] = await Astro.glob("./blog/*.md")
+---
+
+<Layout title="Blog" header="recent posts">
+  <ul class="grid gap-y-4">
+    {allPosts.map((post) => <PostPreview post={post} />)}
+  </ul>
+</Layout>

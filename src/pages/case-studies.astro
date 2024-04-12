@@ -1,0 +1,36 @@
+---
+import Layout from "../layouts/Layout.astro"
+import FrameworkCard from "../components/FrameworkCard.astro"
+---
+
+<Layout title="Case Study" header="Case Studies">
+  <ul class="grid grid-cols-2 gap-x-4 gap-y-4">
+    <li>
+      <a
+        href="https://github.com/chtozamm/astroblogship"
+        target="_blank"
+        class="flex flex-col gap-4 rounded-2xl bg-black bg-opacity-15 p-6 shadow-xl brightness-75 transition-all duration-500 ease-out hover:bg-opacity-30 hover:brightness-100">
+        <!-- <img src={image} alt={`${title} logotype`} class="h-8" /> -->
+        <p class="w-full text-sm">Astroblog</p>
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://github.com/chtozamm/annynotes"
+        target="_blank"
+        class="flex flex-col gap-4 rounded-2xl bg-black bg-opacity-15 p-6 shadow-xl brightness-75 transition-all duration-500 ease-out hover:bg-opacity-30 hover:brightness-100">
+        <!-- <img src={image} alt={`${title} logotype`} class="h-8" /> -->
+        <p class="w-full text-sm">Annynotes</p>
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://github.com/chtozamm/annycars"
+        target="_blank"
+        class="flex flex-col gap-4 rounded-2xl bg-black bg-opacity-15 p-6 shadow-xl brightness-75 transition-all duration-500 ease-out hover:bg-opacity-30 hover:brightness-100">
+        <!-- <img src={image} alt={`${title} logotype`} class="h-8" /> -->
+        <p class="w-full text-sm">Annycars</p>
+      </a>
+    </li>
+  </ul>
+</Layout>
