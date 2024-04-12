@@ -3,30 +3,30 @@ const pathname = Astro.url.pathname
 ---
 
 <nav
-  class="my-8 flex select-none flex-wrap items-center justify-center gap-4 text-sm text-neutral-200 sm:my-8">
+  class="my-8 flex select-none flex-wrap items-center justify-center gap-4 text-sm text-neutral-400 sm:my-8">
   <a
     href="/"
-    class={`${pathname === "/" && "font-bold text-neutral-50 pointer-events-none"} sm:min-w-16 p-2 link`}
+    class={`${pathname === "/" && "text-neutral-50 pointer-events-none"} sm:min-w-16 p-2 font-light link`}
     >Home</a
   >
   <a
     href="/blog"
-    class={`${(pathname === "/blog/" || pathname === "/blog") && "font-bold text-neutral-50 pointer-events-none"} sm:min-w-16 p-2 link`}
+    class={`${(pathname === "/blog/" || pathname === "/blog") && "text-neutral-50 pointer-events-none"} sm:min-w-16 p-2 link font-light`}
     >Blog</a
   >
   <a
     href="/about"
-    class={`${(pathname === "/about/" || pathname === "/about") && "font-bold text-neutral-50 pointer-events-none"} sm:min-w-16 p-2 link`}
+    class={`${(pathname === "/about/" || pathname === "/about") && "text-neutral-50 pointer-events-none"} sm:min-w-16 p-2 link font-light`}
     >About</a
   >
   <a
     href="/case-studies"
-    class={`${(pathname === "/case-studies/" || pathname === "/case-studies") && "font-bold text-neutral-50 pointer-events-none"} sm:min-w-16 p-2 link`}
+    class={`${(pathname === "/case-studies/" || pathname === "/case-studies") && "text-neutral-50 pointer-events-none"} sm:min-w-16 p-2 link font-light`}
     >Works</a
   >
   <a
     href="/testimonials"
-    class={`${(pathname === "/testimonials/" || pathname === "/testimonials") && "font-bold text-neutral-50 pointer-events-none"} sm:min-w-16 p-2 link`}
+    class={`${(pathname === "/testimonials/" || pathname === "/testimonials") && "text-neutral-50 pointer-events-none"} sm:min-w-16 p-2 link font-light`}
     >Testimonials</a
   >
 </nav>
